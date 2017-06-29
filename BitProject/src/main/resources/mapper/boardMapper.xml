@@ -6,8 +6,9 @@
 	
 	<select id="selectall" resultType="kr.co.bit.domain.vo.board.BoardItemVo">
 	
-		select * from tb_board
+		select bidx,title,userid,writedate,hitcnt from tb_board
 	
 	</select>
+
 	
 </mapper>
