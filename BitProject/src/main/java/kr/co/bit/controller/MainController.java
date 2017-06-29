@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.bit.controller.user.UserController;
 @Controller
-public class MainController {
+public class MainController { 
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

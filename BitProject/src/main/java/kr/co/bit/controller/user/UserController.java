@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.bit.controller.MainController;
 
 
-@Controller
+@Controller 
 public class UserController {
 
 	
