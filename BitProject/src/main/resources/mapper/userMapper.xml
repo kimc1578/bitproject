@@ -2,7 +2,40 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.bit.mapper.UserMapper">
-	
-
+<mapper namespace="kr.co.bit.mapper.UserMapper" >
+		<!--회원정보  -->
+		<select id="userinfo" resultType="kr.co.bit.domain.vo.user.UserInfoVo" parameterType="string">
+			
+		select userid,username,email from tb_user where userid = #{userid}
+		</select>
+		<!-- 아이디 중복체크 -->
+		<select id="userid_check" resultType="integer"  parameterType="string" >
+			
+			select count(*) from tb_user  where userid = #{userid}
+			
+		</select>
+		
+		<!--로그인 처리  -->
+		<select id="user_login">
+			select userid,username from tb_user where userid=#{userid} and userpw = #{userpw]
+		</select>
+		
+		<!-- 회원 가입 -->
+		<insert id="userinsert" parameterType="kr.co.bit.domain.dto.user.UserJoinDto" >
+			insert into tb_user(userid,userpw,username,email,JOINDATE) values(#{userid},#{userpw},#{username},#{email},sysdate)
+		</insert>
+		<!-- 회원정보 수정 -->
+		<update id="modiuserinfo" parameterType="kr.co.bit.domain.dto.user.UserModiDto">
+		
+		update tb_user set email = #{email} ,userpw = #{userpw} where userid = #{userid} 
+		
+		</update>
+		
+		<!--비밀번호 확인  -->
+		
+		<!--회원 탈퇴  -->
+		<delete id="deleteuser"  parameterType="string" >
+		
+			delete tb_user  where userid = #{userid}
+		</delete>
 </mapper>

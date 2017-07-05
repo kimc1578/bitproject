@@ -3,12 +3,49 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.bit.mapper.BoardMapper">
-	
+
+	<!-- 유저가 작성한 전체 게시글 리스트 -->
 	<select id="selectall" resultType="kr.co.bit.domain.vo.board.BoardItemVo">
-	
-		select bidx,title,userid,writedate,hitcnt from tb_board
-	
+
+		select bidx, title
+		,USERID,WRITEDATE from tb_board where userid = #{userid}
+
 	</select>
 
+	<!--유저가 작성한 게시글 -->
+	<select id="selectboard" parameterType="kr.co.bit.domain.dto.board.BoardDto"
+		resultType="kr.co.bit.domain.vo.board.BoardVo">
+		<![CDATA[ 
+		
+			select bidx,title,userid,contents,writedate from tb_board where userid= #{userid} and bidx=#{bidx}
+		]]>
+
+	</select>
+
+	<!--user insert board -->
+
+	<insert id="insert_board" parameterType="kr.co.bit.domain.dto.board.InsertBoardDto">
+
+		insert into TB_BOARD(bidx,title,contents,userid)
+		values(seq_tb_board_idx.nextval,#{title},#{contents},#{userid})
+
+	</insert>
+
+	<!--user update board -->
+
+	<update id="update_board" parameterType="kr.co.bit.domain.dto.board.ModifyBoardDto">
+		update TB_BOARD set title =#{title} ,CONTENTS =#{contents} where bidx =
+		#{bidx} and userid=#{userid}
+
+	</update>
 	
+	<!--user delete  board  -->
+	
+	<delete id="delete_board" parameterType="kr.co.bit.domain.dto.board.DeleteBoardDto">
+		DELETE  tb_board where BIDX = #{bidx} and userid= #{userid}
+	</delete>
+
+
+
+
 </mapper>

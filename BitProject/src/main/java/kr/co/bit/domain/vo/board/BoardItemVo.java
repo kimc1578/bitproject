@@ -3,7 +3,7 @@ package kr.co.bit.domain.vo.board;
 import java.sql.Date;
 
 public class BoardItemVo {
-	String bidx,title,userid,hitcnt,writedate;
+	String bidx,title,userid,writedate;
 
 
 	public String getBidx() {
@@ -36,14 +36,6 @@ public class BoardItemVo {
 	}
 
 
-	public String getHitcnt() {
-		return hitcnt;
-	}
-
-
-	public void setHitcnt(String hitcnt) {
-		this.hitcnt = hitcnt;
-	}
 
 
 	public String getWritedate() {
@@ -58,8 +50,9 @@ public class BoardItemVo {
 
 	@Override
 	public String toString() {
-		return "BoardItemVo [bidx=" + bidx + ", title=" + title + ", userid=" + userid + ", hitcnt=" + hitcnt
-				+ ", writedate=" + writedate + "]";
+		return "BoardItemVo [bidx=" + bidx + ", title=" + title + ", userid=" + userid + ", writedate=" + writedate
+				+ "]";
 	}
-	
+
+
 }
