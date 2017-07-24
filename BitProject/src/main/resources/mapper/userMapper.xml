@@ -16,8 +16,8 @@
 		</select>
 		
 		<!--로그인 처리  -->
-		<select id="user_login">
-			select userid,username from tb_user where userid=#{userid} and userpw = #{userpw]
+		<select id="user_login" parameterType="kr.co.bit.domain.dto.user.LoginDto" resultType="kr.co.bit.domain.vo.user.LoginVo">
+			select userid,username from tb_user where userid= #{userid} and userpw = #{userpw}
 		</select>
 		
 		<!-- 회원 가입 -->

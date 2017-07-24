@@ -23,7 +23,7 @@
 		id="dataSource">
 		<property value="oracle.jdbc.driver.OracleDriver" name="driverClass" />
 
-		<property value="jdbc:oracle:thin:@192.168.1.5:1521:xe" name="url" />
+		<property value="jdbc:oracle:thin:@192.168.1.37:1521:xe" name="url" />
 
 		<property value="shh" name="username" />
 
@@ -44,5 +44,6 @@
 	</bean>
 	<context:component-scan base-package="kr.co.bit.dao"></context:component-scan>
 	<context:component-scan base-package="kr.co.bit.domain.service"></context:component-scan>
+	<context:component-scan base-package="kr.co.bit.commons"></context:component-scan>
 
 </beans>

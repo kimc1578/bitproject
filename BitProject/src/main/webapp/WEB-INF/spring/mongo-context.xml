@@ -6,7 +6,7 @@
 
 	<!-- mongo -->
 	 <mongo:mongo-client
-        host="localhost"
+        host="192.168.1.37"
         port="27017">
         <mongo:client-options
             connections-per-host="8"
@@ -21,13 +21,12 @@
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongo" />
-		<constructor-arg name="databaseName" value="memo" />
+		<constructor-arg name="databaseName" value="test" />
 	</bean>
 
+<bean id="mongobook" class="kr.co.bit.mongo.book.dao.impl.BookContentsDaoimpl" />
 
 
-
-	<!-- <bean id="mongoLogger" class="kr.co.smh.mongo.log.impl.MongoLoggerImpl" 
-		/> -->
+	
 
 </beans>
