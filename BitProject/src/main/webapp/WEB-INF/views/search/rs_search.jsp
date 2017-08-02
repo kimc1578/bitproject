@@ -183,21 +183,18 @@
 					<div class="row">
 
 						<div class="image">
-							<a href="#"> <img class="img-responsive" src="${vo.image}"
+							<a href="#"> <img class="img-responsive" src="${vo.image} " style="width:100px;"
 								alt="">
 							</a>
 						</div>
 						<div class="info">
 							<div class="title">${vo.title}</div>
-							<div class="subtitle">Subtitle or writer and so on</div>
-							<p class="details">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Laudantium veniam exercitationem expedita
-								laborum at voluptate. Labore, voluptates totam at aut nemo
-								deserunt rem magni pariatur quos perspiciatis atque eveniet
-								unde. i dont know what should i do its so hard im doing my best
-								but result is bed... haha i shold type something more but i dont
-								type somthing in english anymore.. i want to know how to do it
-								well please somebody tell me about that it looks like wir</p>
+							<div class="subtitle">${vo.subtitle}</div>
+							<p class="details">출판사 : ${vo.publisher} <br/>
+											지은이 :${vo.writer}<br/>
+											가격 :${vo.price}
+							</p>
+							
 						</div>
 
 					</div>

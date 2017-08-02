@@ -26,7 +26,7 @@ public class BookContentsDaoimpl implements BookContentsDao {
 	@Override
 	public BookVo bookfind() {
 		// TODO Auto-generated method stub
-		BookVo vo =mongoTemplate.findOne(new Query(),BookVo.class, "test");
+		BookVo vo =mongoTemplate.findOne(new Query(),BookVo.class, "test4");
 		
 		return vo;
 	
@@ -38,8 +38,9 @@ public class BookContentsDaoimpl implements BookContentsDao {
 	public List<BookVo> bookfindAll(int page,String title) {
 		// TODO Auto-generated method stub
 		Criteria cri = new Criteria("title");
-	
-		cri.regex(title);
+		
+		System.out.println(title);
+		cri.regex(title,"i");
 		Query query = new Query(cri);
 		query.limit(10);
 		//정렬
@@ -48,7 +49,7 @@ public class BookContentsDaoimpl implements BookContentsDao {
 		//
 		query.skip((page-1)*10);
 		
-		return mongoTemplate.find(query, BookVo.class, "test");
+		return mongoTemplate.find(query, BookVo.class, "test4");
 	}
 
 
@@ -56,7 +57,7 @@ public class BookContentsDaoimpl implements BookContentsDao {
 	public int bookcount() {
 		// TODO Auto-generated method stub
 	
-		return (int) mongoTemplate.count(new Query(), "test");
+		return (int) mongoTemplate.count(new Query(), "test4");
 	}
 
 /*

@@ -27,7 +27,14 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</beans:bean>
 
-
+   <interceptors>
+   	<interceptor>
+   		<mapping path="/board/*"/>
+   		<beans:bean class="kr.co.bit.interceptor.AuthInterceptor"/>
+   	
+   	</interceptor>
+   
+   </interceptors>
 
 	<context:component-scan base-package="kr.co.bit.controller" />
 

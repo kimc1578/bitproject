@@ -8,5 +8,6 @@
 </head>
 <body>
 	게시글 목록 페이지
+	${boardlist}
 </body>
 </html>

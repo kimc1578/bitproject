@@ -87,15 +87,39 @@ public class SearchController {
 	}
 
 	@RequestMapping("/search")
-	public String search_result(@RequestParam("title")String title,@RequestParam("q") String q, @RequestParam(value = "p", defaultValue = "1") int pnum,
+	public String search_result(@RequestParam(value="title",defaultValue="")String title,@RequestParam("q") String q, @RequestParam(value = "p", defaultValue = "1") int pnum,
 			Model model) {
-
+		
 		if (pnum <= 0) {
 			pnum = 1;
 		}
-
+		
 		if (q.contains("책") || q.contains("book")||q.contains("도서")||q.contains("기본서")||q.contains("기술서")||q.contains("서적")) {
-
+		
+			 
+			if(title.equals("")){
+				
+				String[] tag = {"책","book","도서","기본서","기술서","서적","전문서"};
+				
+				for(int i=0; i<tag.length;i++){
+					 if(q.contains(tag[i])){
+						 if(q.contains(" ")){
+							 System.out.println("여기탐1");
+						 title = q.replaceAll(" "+tag[i], "");
+						 String[] token = title.split(" ");
+						 title = token[0];
+						 	}else{
+						 		 System.out.println("여기탐2");
+						 		title = q.replaceAll(tag[i],"");
+						 		System.out.println(title);
+						 	}
+						
+						 
+						 }
+				}
+				
+			}
+			
 			// 보여줘야할 결과물 수
 			int rec = 10;
 			// 총 결과물 수
@@ -133,6 +157,7 @@ public class SearchController {
 			model.addAttribute("searchVo", resultList);
 			model.addAttribute("pageIndex", pageIndex);
 			model.addAttribute("pagecnt", pagecnt);
+			
 			return "search/rs_search";
 		} else {
 

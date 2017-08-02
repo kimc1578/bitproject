@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -12,11 +12,11 @@
     <title>Join In</title>
 
     <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
     <!-- font awesome -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../resources/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
     <!-- Custom style -->
-    <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../resources/css/style.css" media="screen" title="no title" charset="utf-8">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,37 +52,37 @@
         <div class="page-header" align = "center">
     	    <h1>Join In</h1>
         </div>
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="/user/joinOk" method="post">
 	  <div class="form-group">
           <label class="col-sm-3 control-label" for="inputID">ID</label>
         <div class="col-sm-6">
-          <input class="form-control" id="inputID" type="text" placeholder="ID">
+          <input class="form-control" id="inputID" name="userid" type="text" placeholder="ID">
         </div>
         </div>
         <div class="form-group">
           <label class="col-sm-3 control-label" for="inputPassword">Password</label>
         <div class="col-sm-6">
-          <input class="form-control" id="inputPassword" type="password" placeholder="Password">
+          <input class="form-control" name="userpw" id="inputPassword" type="password" placeholder="Password">
         <p class="help-block">Password must consist of letters, numbers and punctuation</p>
         </div>
         </div>
           <div class="form-group">
               <label class="col-sm-3 control-label" for="inputPasswordCheck">Checking Password</label>
              <div class="col-sm-6">
-              <input class="form-control" id="inputPasswordCheck" type="password" placeholder="Check Your Password">
+              <input class="form-control"  id="inputPasswordCheck" type="password" placeholder="Check Your Password">
                 <p class="help-block">Insert password one more time</p>
              </div>
           </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label" for="inputName">Name</label>
+            <label class="col-sm-3 control-label"  for="inputName">Name</label>
           <div class="col-sm-6">
-            <input class="form-control" id="inputName" type="text" placeholder="Name">
+            <input class="form-control" id="inputName" name="username" type="text" placeholder="Name">
           </div>
         </div>
       	 <div class="form-group">
           <label class="col-sm-3 control-label" for="inputEmail">e-mail</label>
         <div class="col-sm-6">
-          <input class="form-control" id="inputEmail" type="email" placeholder="e-mail">
+          <input class="form-control" id="inputEmail" name="email" type="email" placeholder="e-mail">
         </div>
         </div>
           <div class="form-group">
@@ -109,6 +109,6 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="../resources/js/bootstrap.min.js"></script>
   </body>
 </html>

@@ -15,11 +15,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.bit.controller.MainController;
 import kr.co.bit.domain.dto.user.LoginDto;
+import kr.co.bit.domain.dto.user.UserJoinDto;
 import kr.co.bit.domain.service.user.UserService;
 import kr.co.bit.domain.vo.user.LoginVo;
+import kr.co.bit.domain.vo.user.UserInfoVo;
 
 
 @Controller 
@@ -30,9 +33,11 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	//회원정보 요청
 	@RequestMapping("/info")
-	public String userInfo(HttpSession session,Model model){
+	public String userInfo( HttpSession session,Model model){
+		  LoginVo vo =  (LoginVo) session.getAttribute("loginVo");
 		
-
+		UserInfoVo userinfovo = userservice.userinfo(vo.getUserid());
+		model.addAttribute("userinfovo", userinfovo);
 		
 		return "/user/info";
 	}
@@ -49,8 +54,11 @@ public class UserController {
 	
 	//회원가입 service 호출
 	@RequestMapping("/joinOk")
-	public String userJoinOk(){
+	public String userJoinOk(UserJoinDto userdto){
 		
+		
+		int result =userservice.userJoin(userdto);
+		System.out.println(result);
 		
 		return "redirect:/";
 		
@@ -60,8 +68,9 @@ public class UserController {
 	//회원정보 수정
 	
 	@RequestMapping("/modify")
-	public String modify(){
-		System.out.println("modi");
+	public String modify(@RequestParam String userid ,Model model){
+		
+	
 		
 		
 		return "/user/info_modify";
@@ -100,7 +109,7 @@ public class UserController {
 			
 			return "redirect:/user/login";
 		}
-		System.out.println("vo : "+vo);
+	
 		
 		
 		session.setAttribute("loginVo",vo);

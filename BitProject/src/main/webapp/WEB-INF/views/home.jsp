@@ -43,6 +43,11 @@ $(document).ready(function(){
         $(".img_btn").click(function(){
         	location.href = '/img_search'
         });
+        
+        $("#logout_btn").click(function(){
+        	
+        	location.href='/user/logout'
+        });
     });
 
 </script>
@@ -148,8 +153,19 @@ $(document).ready(function(){
   <body>
       
       <div class="lonin_area" align="right">
-          <div class="box"><button class="login_btn" id="joinin_btn">Join in</button></div>
-          <div class="box"><button class="login_btn" id="login_btn">Log in</button></div>
+        
+          <c:choose>
+          	<c:when test= "${loginVo eq null}" >
+          	  <div class="box"><button class="login_btn" id="joinin_btn">Join in</button></div>
+          	  <div class="box"><button class="login_btn" id="login_btn">Log in</button></div>
+          	</c:when>
+          	<c:otherwise>
+          		<a href="/user/info">${loginVo.username}</a> 
+          	  <div class="box"><button class="login_btn" id="logout_btn">Log out</button></div>
+          	</c:otherwise>
+          </c:choose>
+         
+        
       </div>
       <article class="container">
         <form class="form-horizontal" action="/search">

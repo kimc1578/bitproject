@@ -6,7 +6,7 @@
 
 	<!-- mongo -->
 	 <mongo:mongo-client
-        host="192.168.1.37"
+        host="192.168.1.13"
         port="27017">
         <mongo:client-options
             connections-per-host="8"

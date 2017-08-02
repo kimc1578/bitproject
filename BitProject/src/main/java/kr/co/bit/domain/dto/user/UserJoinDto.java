@@ -23,6 +23,12 @@ public class UserJoinDto {
 		return username;
 	}
 
+	@Override
+	public String toString() {
+		return "UserJoinDto [userid=" + userid + ", userpw=" + userpw + ", username=" + username + ", email=" + email
+				+ "]";
+	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
