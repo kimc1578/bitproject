@@ -33,15 +33,40 @@ public class BookContentsDaoimpl implements BookContentsDao {
 	
 	}
 
+	@Override
+	public List<BookVo> bookfindAll(String title) {
+		// TODO Auto-generated method stub
+		Criteria cri = new Criteria("title");
+		
+		
+		cri.regex(title,"i");
+		
+		Query query = new Query(cri);
+	
+		//query.limit(10);
+		//정렬
+		Sort sort = new Sort(Direction.DESC, "title");
+		query.with(sort);
+		//
+		//query.skip((page-1)*10);
+		
+		return mongoTemplate.find(query, BookVo.class, "test4");
+	}
+	
 
 	@Override
 	public List<BookVo> bookfindAll(int page,String title) {
 		// TODO Auto-generated method stub
 		Criteria cri = new Criteria("title");
 		
-		System.out.println(title);
+	
 		cri.regex(title,"i");
+			//조건 중첩
+	/*	Criteria cri2 = new Criteria("writer");
+		cri2.is("이관철");
+		cri.andOperator(cri2);*/
 		Query query = new Query(cri);
+	
 		query.limit(10);
 		//정렬
 		Sort sort = new Sort(Direction.DESC, "title");

@@ -13,6 +13,8 @@ public interface BookContentsDao {
 			
 			public int bookcount();
 			public List<BookVo> bookfindAll(int page,String title);
+
+			public List<BookVo> bookfindAll(String title);
 			
 		
 			

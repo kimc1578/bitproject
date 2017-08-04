@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,10 +15,10 @@
     <!-- Bootstrap -->
     <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
     <!-- font awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./resources/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom style -->
-    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./resources/css/style.css" media="screen" title="no title" charset="utf-8">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,6 +32,14 @@
     
     <script>
     
+       $(document).ready(function(){
+    
+    $(".img_sch").click(function(){
+        $(".btn_file").click();
+    });
+ });
+        
+        
         $(document).ready(function(){
             
             
@@ -41,11 +50,11 @@
              
                 if(bookmark=="false"){
                     $("#bookmark").val("true");
-                    $(this).css("color","red");
+                    $(this).css("color","#fe8f9d");
                     
                 }else{
                     $("#bookmark").val("false");
-                    $(this).css("color","gray");
+                    $(this).css("color","#eadde1");
                     
                 
             }
@@ -54,6 +63,7 @@
            
         });
     </script>
+
 
 <style>
     
@@ -122,62 +132,99 @@
     background-color: #5385c1;
     float: left;
     margin-left: 29.14%;
-    margin-top: 0.9%;
+    margin-top: 0.8%;
     margin-bottom: 0.9%;
 }
 
 .form-horizontal{
-    height: 100%;
-   background-color: #5385c1;
+   width: 86.5%;
+        height: 89%;
+        border: none;
+        margin-left: 0px;
+        padding-left: 0px;
+        margin-right: 4px;
+        font-size: 15px;
+    float: left;
+}
+    
+.search-area{
+   margin-top: 0%;
+   margin left: 0px;
+   margin-right: 0.37%;
+   margin-bottom: 0.9%;
+   padding-left: 1%;
+   width: 100%;
+   height: 100%;
+   border-style: none;
+    background-color: #5385c1;
+    color: white;
+    font-size: 18px;
 }
     
     .sch_btn{
-        margin-left: 1.4%
+        outline: none;
+        margin-left: 1.4%;
+        
     }
     
     .img_sch{
-        margin-left: 2.7%;
+        margin-left: 3%;
         margin-right: 0.5%;
+        outline: none;
     }
         
 .btn{
+    outline: none;
     color: white;
     background-color: #5385c1;
     border: none;
-    font-size: 142%;
+    font-size: 168%;
     padding: 0px;
     margin-top: 0px;
+    padding-top: 0.63%;
 }
 
 .btn:hover{ 
   background-color:#5385c1;
   color: white;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  }    
+  outline: none;
+  
+  }
     
-        
+.btn:active{ 
+  background-color:#5385c1;
+  color: white;
+  outline: none;
+  
+  }
+    
+.btn:visited{ 
+  background-color:#5385c1;
+  color: white;
+  outline: none;
+ 
+  } 
+.btn:focus{ 
+  background-color:#5385c1;
+  color: white;
+  outline: none;
+ 
+  }
+ 
 .search-group{
-      padding-top: 0.4%;
-      padding-bottom: 0.4%;
+      margin-left: 0px;
+      padding-left: 0px;
+      padding-top: 1.2%;
+      padding-bottom: 0.5%;
       background-color: #5385c1;
-      width: auto;
-      height: 33%;
+      width: 100%;
+      height: 100%;
+      border: none;
 }
 
-.search-area{
-   margin-top: 1.3%;
-   margin left: 0px;
-   margin-right: 0.37%;
-   margin-bottom: 0.9%;
-   width: 87.6%;
-   height: 250%;
-   border-style: none;
-    background-color: #5385c1;
-    color: white;
-}
+
+    
+
 
 .login_btn{
     padding: auto;
@@ -185,10 +232,10 @@
     text-decoration: none;
     display: inline-block;
     font-size: 100%;
-    margin-top: 4.6%;
+    margin-top: 3.78%;
     margin-right: 10%;
     cursor: pointer;
-    border-radius: 4px   
+    border-radius: 4px;  
     display: block;
     height: 53%;
     cursor: pointer;
@@ -201,6 +248,7 @@
     -webkit-border-radius: 2px;
     border-radius: 2px;
     width: auto;
+    outline: none;
     
 }
 
@@ -211,6 +259,7 @@
   -o-transition: all 0.2s;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+    outline: none;
   }
      .lonin_area{
         width: 23%;
@@ -225,13 +274,13 @@
         padding-top: 35px;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: #263238;
+        color: #5385c1;
         background: transparent;
         -moz-border-radius: 2px;
         -webkit-border-radius: 2px;
         border-radius: 2px;
         font-size: 16px;
-        text-decoration-color: #263238;
+        text-decoration-color: #5385c1;
         float: left;
         
     }
@@ -240,7 +289,7 @@
         height: 100%;
         padding-top: 0%;
         width:auto;
-        text-decoration-color: #263238;
+        text-decoration-color: #5385c1;
         margin-top: 4.66%;
         margin-left: 198px;
         margin-right: 1px;
@@ -272,87 +321,38 @@
 
     .bm-container{
         width: 43.6%;
-        margin-top:5.7%;
+        margin-top: 6%;
         margin-left: 20.99%;
-        height: auto;
-        padding-left: 1%;
+        height: 100%;
+        padding-left: 1.7%;
         padding-right: 1.7%;
-        padding-top: 0.01%;
+        padding-top: 1%;
         background-color: white;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
         
     }
-  
-    .bm-row-bottom{
+    
+     .bm-row{
         margin-top : 20px;
-        height: 90px;
-    }
-   
-    .bm-page-header{
-        margin: 0;
-        letter-spacing: 2px;
-    }
-    .bm-image{
-        
-    }
- 
-    .bm-subtitle{
-        width: 100%;
-    }
-
-    .bm-heart-area{
-        vertical-align: middle;
-    }
-    .bm-search-area{
-        width: 600px;
-        height: 30px;
-        border-style: none;
-    }
-
-    .bm-lonin_area{
-        padding-top: 4px;
+        height: 159px;
+        width: 99%;
     }
     
-    .pagination{
-    color: black;
-    }
-    .bm-line{
-        width:727px;
-        margin-left: 0px;
-    }
-    .top-row{
-        margin-top: 0px;
-        width: auto;
-        margin-left: 13.5px;
-    }
-    .row{
-        margin-top : 20px;
-        width: 648px;
-    }
- 
-    .page-header{
-        margin-left: 0px;
-        padding-left: 0px;
-        padding-bottom: 2%;
-        padding-top: 0%;
-        font-size: 250%;
-        letter-spacing: 2px;
-    }
-    .image{
+    .bm-image{
         float:left;
         width:130px;
         height:147px;
-        margin-right:15px;
-        margin-left: 4.3%;
-        margin-top: 0.48%;
+        margin-right: 3%;
+        margin-left: 0.1%;
+        margin-top: 3px;
     }
-    .info{
+    .bm-info{
         float:left;
-        width: 70%;
+        width: 74%;
         height: 149px;
-        padding-bottom: 24.4%;
+        
     }
-    .title{
+    .bm-title{
         width: 100%;
         font-size: 24px;
         font-weight: bold;
@@ -360,47 +360,56 @@
         margin: 0px;
         display:block;
         letter-spacing: 2px;
-        
+
     }
-    subtitle{
+    .bm-subtitle{
         width: 100%;
-        padding: 0px;
-        margin: 0px;
-        padding: 0px;
+;
     }
-    .details{
-        width: 118%;
+    .bm-details{
+        width: 103%;
         height: 98px;
         overflow: hidden;
         display:block;
         text-overflow:ellipsis;
-        padding-bottom: 4%;
-
+  
+            
     }
     
-    .heart-area{
+    hr{
         width: auto;
-        height: auto;
-        margin-left: 94% 
-    }
-    .search-area{
-        width: 84%;
-        height: 35px;
-        border-style: none;
-        margin-left: 11px;
-        margin-right: 10px;
-        font-size: 15px;
-    }
-    .lonin_area{
-        padding-top: 4px;
     }
     
- 
-    
-    .pagination{
-        border-color: #5385c1;
-        color: #5385c1;
+    .btn-primary{
+        background-color: #5385c1;
+        color: white;
+        padding-right: 8%;
+        padding-left: 9%;
+        padding-top: 2%;
+        padding-bottom: 2%;
     }
+    
+    .thumbnail{
+        width: 89%;
+    }
+    
+    .hero-feature{
+        padding: 0.8%;
+    }
+    
+    .col-lg-12{
+        padding-left: 2%;
+    }
+    
+    .details{
+        padding-left: 0.7%;
+        padding-right: 0.7%;
+    }
+    
+    .file-area{
+        display: none;
+    }
+    
 
     
 </style>
@@ -410,14 +419,16 @@
        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
              <article class="container">
-        <form class="form-horizontal">
+        
 	  <div class="search-group">
-		<input class="search-area" id="search" name ="q"  type="search">
+          <form class="form-horizontal">
+		<input class="search-area" id="search" type="search">
+          </form>
                 <button   class= "btn sch_btn" type="submit" value="검색" ><i class="fa fa-search"></i></button>
                 <button   class= "btn img_sch" type="submit" value="이미지검색" ><i class="fa fa-camera"></i></button>
-          
+                <div class="file-area"><input class= "btn_file" type="file"></div>
         </div>
-        </form>
+        
       </article>
             <div class="lonin_area" align="right">
 			<button class="login_btn" id="login_btn">Log in & Join in</button>
@@ -449,70 +460,50 @@
       <div class="space">
             <div class="bm-container">
 
-                <div class="top-row">
-                <h1 class="page-header">Search Result
-                    <!-- <small>Secondary Text</small> -->
-                </h1>
-        </div>
-        <!-- /.row -->
-	<c:choose>
-			<c:when test="${not empty msg}">
-				<h2>${msg}</h2>
-			</c:when>
-			<c:otherwise>
-				<c:forEach items="${searchVo}" var="vo">
-					<div class="row">
-
-						<div class="image">
-							<a href="#"> <img class="img-responsive" src="${vo.image} " 
-								alt="">
-							</a>
-						</div>
-						<div class="info">
-							<div class="title">${vo.title}</div>
-							<div class="subtitle">${vo.subtitle}</div>
-							<p class="details">출판사 : ${vo.publisher} <br/>
-											지은이 :${vo.writer}<br/>
-											가격 :${vo.price}
-							</p>
-							
-						</div>
-
-					</div>
-					<!-- /.row -->
-
-					<hr>
-
-				</c:forEach>
-
-
-
-			</c:otherwise>
-		</c:choose>
-
+               <div class="bm-row">
+            
+            <div class="bm-image">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/300x350" alt="">
+                </a>
+            </div>
+            <div class="bm-info">
+                <div class= "bm-title">Title</div>
+                <!-- 하트 아이콘 북마크-->
                 
-
-        <!-- Pagination -->
-        <div class="row text-center">
-					<div class="col-lg-12">
-						<ul class="pagination">
-							<li><a href="/search?q=${q}&p=${pageIndex-1}">&laquo;</a></li>
-							<c:forEach step="1" begin="${startpage}" end="${endpage}" var="i">
-						
-								
-								<li><a href="/search?q=${q}&p=${i}&title=${title}">${i}</a></li>
-							
-							</c:forEach>
-
-							<li><a href="/search?q=${q}&p=${pageIndex+1}">&raquo;</a></li>
-						</ul>
-					</div>
-				</div>
+                <!-- <i class="fa fa-heart bookmark after"> -->
+                <div class= "bm-subtitle">Subtitle or writer and so on</div>
+                <p class = "bm-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.
+                i dont know what should i do its so hard im doing my best but result is bed... haha i shold type something more but i dont type somthing in english anymore.. i want to know how to do it well please somebody tell me about that it looks like wir</p>
+            </div>
+            <div class="bm-heart-area"><i class="fa fa-heart bookmark change" style="font-size:25px; color:#eadde1;" ></i><input type="hidden" value="false" id="bookmark" /></div>
         </div>
+        
+        <!-- /.row -->
+        <hr>
+        
+        <div class="details">
+        
+           detail block
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    
+        </div>
+        
+        <!-- /.row -->
+        <hr>
+        
+        <div class="useful-info">
+        
+           useful-info
+            <br><br><br><br><br><br><br><br><br>
+                    
+        </div>
+        
+        <!-- /.row -->
+        <hr>
 
             </div>    
       </div>
 
   </body>
 </html>
-

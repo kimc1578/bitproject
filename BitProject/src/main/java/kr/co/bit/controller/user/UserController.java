@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.bit.controller.MainController;
 import kr.co.bit.domain.dto.user.LoginDto;
@@ -42,13 +43,11 @@ public class UserController {
 		return "/user/info";
 	}
 	//회원가입 frm페이지 호출
-	@RequestMapping("/join")
+	@RequestMapping("/join_login")
 	public String userJoin(){
 		
 		
-		
-		
-		return "/user/join";
+		return "/user/join_login";
 		
 	}
 	
@@ -58,7 +57,7 @@ public class UserController {
 		
 		
 		int result =userservice.userJoin(userdto);
-		System.out.println(result);
+		
 		
 		return "redirect:/";
 		
@@ -84,15 +83,8 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	//북마크관리
 	
-	// 로그인 페이지
-	@RequestMapping("/login")
-	public String loginuser(){
-		
-	
-		return "/user/Login";
-	}
+
 	
 	//로그인 OK
 	
@@ -134,6 +126,7 @@ public class UserController {
 	}
 	
 	//아이디 중복 체크  Ajax통신 json
+	@ResponseBody
 	@RequestMapping("/idcheck")
 	public String idcheck(){
 		System.out.println("idcheck");

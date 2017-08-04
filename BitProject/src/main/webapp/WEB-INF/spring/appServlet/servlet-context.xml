@@ -27,17 +27,29 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</beans:bean>
 
-   <interceptors>
-   	<interceptor>
-   		<mapping path="/board/*"/>
-   		<beans:bean class="kr.co.bit.interceptor.AuthInterceptor"/>
-   	
-   	</interceptor>
-   
-   </interceptors>
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/*" />
+			<beans:bean class="kr.co.bit.interceptor.AuthInterceptor" />
+
+		</interceptor>
+		<interceptor>
+				<mapping path="/**"/>
+				<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor">
+				</beans:bean>
+			</interceptor>
+
+	</interceptors>
 
 	<context:component-scan base-package="kr.co.bit.controller" />
 
+	<annotation-driven>
+		<argument-resolvers>
 
+			<beans:bean
+				class="org.springframework.mobile.device.DeviceWebArgumentResolver"></beans:bean>
+		</argument-resolvers>
+
+	</annotation-driven>
 
 </beans:beans>

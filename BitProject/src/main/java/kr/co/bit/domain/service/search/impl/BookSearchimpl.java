@@ -20,6 +20,12 @@ public class BookSearchimpl implements BookSearch {
 			
 			return bookdao.bookfindAll(page,title);
 		}
+		@Override
+		public List<BookVo> bookfindAll(String title) {
+			// TODO Auto-generated method stub
+			
+			return bookdao.bookfindAll(title);
+		}
 
 		@Override
 		public int bookcount() {

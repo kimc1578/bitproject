@@ -3,9 +3,9 @@ package kr.co.bit.mongo.book.domain.vo;
 import org.springframework.data.annotation.Id;
 
 public class BookVo {
-	String  title ,writer,subtitle,translator,publisher ,price,subcategory ,tab,image  ;
 	@Id
 	String id;
+	String  title ,writer,subtitle,translator,publisher ,price,subcategory ,tab,image  ;
 	public String getTitle() {
 		return title;
 	}

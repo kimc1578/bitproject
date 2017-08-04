@@ -5,15 +5,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicInterface2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mobile.device.Device;
+import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -60,17 +70,18 @@ public class SearchController {
 
 			if (map.get(keyset[2]) != null && map.get(keyset[0]).equals("book")
 					&& Float.valueOf(map.get(keyset[1])) > 0.8) {
-				
+
 				long end = System.currentTimeMillis();
-				
+
 				String title = map.get(keyset[2]);
-				if(title.contains("jQuery")){
+				if (title.contains("jQuery")) {
 					title = "jQuery";
 				}
+				System.out.println(map.get(keyset[0]));
 				
 				System.out.println("실행 시간 : " + (end - start) / 1000.0);
-				return "redirect:/search?q="+map.get(keyset[0])+"&title="+title ;
-				
+				//return "redirect:/search?q=" + map.get(keyset[0]) + "&title=" + title;
+
 			}
 
 		} catch (IllegalStateException | IOException e) {
@@ -81,45 +92,90 @@ public class SearchController {
 			e.printStackTrace();
 		}
 
-	
-
 		return "search/rs_search";
+	}
+	@ResponseBody
+	@RequestMapping("/search_m")
+	public List<BookVo> search_result(HttpSession session,@RequestParam String q) {
+		
+		
+		String title = "";
+		List<BookVo>listbook =null;
+		System.out.println("search_m");
+		if (q.contains("책") || q.contains("book") || q.contains("도서") || q.contains("기본서") || q.contains("기술서")
+				|| q.contains("서적")) {
+
+			if (title.equals("")) {
+
+				String[] tag = { "책", "book", "도서", "기본서", "기술서", "서적", "전문서" };
+
+				for (int i = 0; i < tag.length; i++) {
+					if (q.contains(tag[i])) {
+						if (q.contains(" ")) {
+						
+							title = q.replaceAll(" " + tag[i], "");
+							String[] token = title.split(" ");
+							title = token[0];
+						} else {
+							
+							title = q.replaceAll(tag[i], "");
+							System.out.println(title);
+						}
+
+					}
+				}
+
+			}
+			listbook = bookSearch.bookfindAll(title);	
+			
+			System.out.println(listbook);
+		}
+		
+		
+		
+		return listbook;
 	}
 
 	@RequestMapping("/search")
-	public String search_result(@RequestParam(value="title",defaultValue="")String title,@RequestParam("q") String q, @RequestParam(value = "p", defaultValue = "1") int pnum,
-			Model model) {
+	public String search_result(@RequestParam(value = "title", defaultValue = "") String title,
+			@RequestParam("q") String q, @RequestParam(value = "p", defaultValue = "1") int pnum, Model model,HttpSession session) {
+		//Spring mobile  device check 
+		/*Device device = DeviceUtils.getCurrentDevice(RequestContextHolder.currentRequestAttributes());
+		if(device.isMobile()){
+			  
+			 return "redirect:/search_m?q="+q;
+		}*/
+		
 		
 		if (pnum <= 0) {
 			pnum = 1;
 		}
-		
-		if (q.contains("책") || q.contains("book")||q.contains("도서")||q.contains("기본서")||q.contains("기술서")||q.contains("서적")) {
-		
-			 
-			if(title.equals("")){
-				
-				String[] tag = {"책","book","도서","기본서","기술서","서적","전문서"};
-				
-				for(int i=0; i<tag.length;i++){
-					 if(q.contains(tag[i])){
-						 if(q.contains(" ")){
-							 System.out.println("여기탐1");
-						 title = q.replaceAll(" "+tag[i], "");
-						 String[] token = title.split(" ");
-						 title = token[0];
-						 	}else{
-						 		 System.out.println("여기탐2");
-						 		title = q.replaceAll(tag[i],"");
-						 		System.out.println(title);
-						 	}
-						
-						 
-						 }
+
+		if (q.contains("책") || q.contains("book") || q.contains("도서") || q.contains("기본서") || q.contains("기술서")
+				|| q.contains("서적")) {
+
+			if (title.equals("")) {
+
+				String[] tag = { "책", "book", "도서", "기본서", "기술서", "서적", "전문서" };
+
+				for (int i = 0; i < tag.length; i++) {
+					if (q.contains(tag[i])) {
+						if (q.contains(" ")) {
+							System.out.println("여기탐1");
+							title = q.replaceAll(" " + tag[i], "");
+							String[] token = title.split(" ");
+							title = token[0];
+						} else {
+							System.out.println("여기탐2");
+							title = q.replaceAll(tag[i], "");
+							System.out.println(title);
+						}
+
+					}
 				}
-				
+
 			}
-			
+
 			// 보여줘야할 결과물 수
 			int rec = 10;
 			// 총 결과물 수
@@ -149,7 +205,10 @@ public class SearchController {
 				endpage = pagecnt;
 			}
 
-			List<BookVo> resultList = bookSearch.bookfindAll(pnum,title);
+			List<BookVo> resultList = bookSearch.bookfindAll(pnum, title);
+			
+			
+			
 			model.addAttribute("startpage", startpage);
 			model.addAttribute("endpage", endpage);
 			model.addAttribute("q", q);
@@ -157,7 +216,7 @@ public class SearchController {
 			model.addAttribute("searchVo", resultList);
 			model.addAttribute("pageIndex", pageIndex);
 			model.addAttribute("pagecnt", pagecnt);
-			
+
 			return "search/rs_search";
 		} else {
 
@@ -168,5 +227,9 @@ public class SearchController {
 		}
 
 	}
-
+	
+	@RequestMapping("/search_deatil")
+	public String search_deatil(){
+		return "search/search_deatil";
+	}
 }

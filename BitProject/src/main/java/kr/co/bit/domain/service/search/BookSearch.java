@@ -8,4 +8,5 @@ public interface BookSearch {
 	
 	public List<BookVo> bookfindAll(int page,String title);
 	public int bookcount();
+	public List<BookVo> bookfindAll(String title);
 }

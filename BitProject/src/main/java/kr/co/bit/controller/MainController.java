@@ -9,11 +9,14 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.mobile.device.Device;
+import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import kr.co.bit.controller.user.UserController;
 @Controller
@@ -25,6 +28,9 @@ public class MainController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model , HttpSession session) {
 		
+		Device device = DeviceUtils.getCurrentDevice(RequestContextHolder.currentRequestAttributes());
+		
+
 		
 		
 		return "home";
