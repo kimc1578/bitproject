@@ -2,6 +2,7 @@ package kr.co.bit.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -16,9 +17,14 @@ public class AuthInterceptor  extends HandlerInterceptorAdapter{
 		// TODO Auto-generated method stub
 		
 		 LoginVo vo  =(LoginVo) request.getSession().getAttribute("loginVo");
+	
+	
 		 if(vo==null){
-			  
-			 response.sendRedirect("/user/login");
+			
+			 String uri =	 request.getServletPath();
+			 HttpSession session = request.getSession();
+			 session.setAttribute("uri", uri);
+			 response.sendRedirect("/user/join_login");
 			 return false;
 		 }
 	

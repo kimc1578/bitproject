@@ -2,20 +2,25 @@ package kr.co.bit.mongo.book.dao;
 
 import java.util.List;
 
+import kr.co.bit.mongo.book.domain.vo.BookDetailVo;
 import kr.co.bit.mongo.book.domain.vo.BookVo;
-import kr.co.bit.mongo.book.domain.vo.Test2Vo;
-import kr.co.bit.mongo.book.domain.vo.TestVo;
+import kr.co.bit.mongo.book.domain.vo.Keyword;
+
 
 public interface BookContentsDao {
 			
 	
-			public BookVo bookfind();
-			
-			public int bookcount();
-			public List<BookVo> bookfindAll(int page,String title);
-
-			public List<BookVo> bookfindAll(String title);
-			
+	
 		
+		
+			
+			public BookVo bookdetailfind(String detailNo);
+
+			BookDetailVo bookDetailfind2(String detailNo);
+
+			List<Keyword> keywordAll();
+
+			public List<BookVo> defalutbookinfo();
+			
 			
 }

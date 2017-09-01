@@ -1,7 +1,7 @@
 package kr.co.bit.domain.dto.user;
 
 public class UserModiDto {
-	private String userid,userpw,email;
+	private String userid,email;
 
 	public String getUserid() {
 		return userid;
@@ -11,13 +11,7 @@ public class UserModiDto {
 		this.userid = userid;
 	}
 
-	public String getUserpw() {
-		return userpw;
-	}
 
-	public void setUserpw(String userpw) {
-		this.userpw = userpw;
-	}
 
 	public String getEmail() {
 		return email;

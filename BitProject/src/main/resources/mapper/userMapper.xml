@@ -27,15 +27,24 @@
 		<!-- 회원정보 수정 -->
 		<update id="modiuserinfo" parameterType="kr.co.bit.domain.dto.user.UserModiDto">
 		
-		update tb_user set email = #{email} ,userpw = #{userpw} where userid = #{userid} 
+		update tb_user set email = #{email}  where userid = #{userid} 
 		
 		</update>
 		
 		<!--비밀번호 확인  -->
+		<select id="passcheck" parameterType="kr.co.bit.domain.dto.user.LoginDto" resultType="int">
+		select count(*) from tb_user where USERID = #{userid} and USERPW = #{userpw}
 		
+		</select>
+		<update id="passmodi" parameterType="hashMap" >
+			update tb_user set userpw =#{newpass} where userid = #{userid}
+		</update>		
 		<!--회원 탈퇴  -->
 		<delete id="deleteuser"  parameterType="string" >
 		
 			delete tb_user  where userid = #{userid}
 		</delete>
+		
+		
+		
 </mapper>

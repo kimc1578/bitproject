@@ -1,4 +1,4 @@
-package kr.co.bit.domain.vo.board;
+package kr.co.bit.mongo.book.domain.vo;
 
 public class BookListVo {
 	private String publisher, subtitle, title, image, writer, detailpage, detailNo, dispNo, price;

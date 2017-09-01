@@ -1,5 +1,7 @@
 package kr.co.bit.dao.user;
 
+import java.util.HashMap;
+
 import kr.co.bit.domain.dto.user.LoginDto;
 import kr.co.bit.domain.dto.user.UserJoinDto;
 import kr.co.bit.domain.dto.user.UserModiDto;
@@ -18,5 +20,9 @@ public interface UserDao {
 	public int userdelete(String userid);
 	
 	public LoginVo userlogin(LoginDto dto);
+
+	int passcheck(LoginDto dto);
+
+	int userpassmodi(HashMap<String, String> hashMap);
 
 }

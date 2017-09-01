@@ -11,17 +11,17 @@
         <mongo:client-options
             connections-per-host="8"
             threads-allowed-to-block-for-connection-multiplier="4"
-            connect-timeout="1000"
-            max-wait-time="1500"
-            socket-keep-alive="false"
-            socket-timeout="1500"
+            connect-timeout="10000"
+            max-wait-time="10000"
+            socket-keep-alive="true"
+            socket-timeout="10000"
         />
     </mongo:mongo-client>
 
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg ref="mongo" />
-		<constructor-arg name="databaseName" value="test" />
+		<constructor-arg name="databaseName" value="book" />
 	</bean>
 
 <bean id="mongobook" class="kr.co.bit.mongo.book.dao.impl.BookContentsDaoimpl" />

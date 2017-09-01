@@ -1,5 +1,7 @@
 package kr.co.bit.dao.user.impl;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -49,12 +51,25 @@ public class UserDaoimpl implements UserDao {
 		
 		return session.delete(namespace+".deleteuser", userid);
 	}
+	@Override
+	public int userpassmodi(HashMap<String, String>hashMap){
+		
+		return session.update(namespace+".passmodi", hashMap);
+	}
+	
 
 	@Override
 	public LoginVo userlogin(LoginDto dto) {
 		// TODO Auto-generated method stub
 		
 		return session.selectOne(namespace+".user_login", dto);
+	}
+	
+	@Override
+	public int passcheck(LoginDto dto){
+		
+		
+		return session.selectOne(namespace+".passcheck", dto);
 	}
 
 }

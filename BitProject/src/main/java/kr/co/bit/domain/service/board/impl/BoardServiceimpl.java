@@ -1,5 +1,6 @@
 package kr.co.bit.domain.service.board.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,11 @@ public class BoardServiceimpl  implements BoardService{
 	public BoardVo selectBoard(BoardDto BoardDto) {
 		// TODO Auto-generated method stub
 		return dao.selectBoard(BoardDto);
+	}
+	
+	@Override
+	public List<HashMap<String, String>> answercheck(String userid){
+		return dao.answercheck(userid);
 	}
 	
 

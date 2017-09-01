@@ -26,13 +26,13 @@ public class MainController {
 	 */
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model , HttpSession session) {
-		
-		Device device = DeviceUtils.getCurrentDevice(RequestContextHolder.currentRequestAttributes());
-		
-
-		
-		
+	public String home(Model model , HttpSession session,HttpServletRequest request) {
+			
 		return "home";
+	}
+	
+	@RequestMapping("/error")
+	public String error(){
+		return "error";
 	}
 }

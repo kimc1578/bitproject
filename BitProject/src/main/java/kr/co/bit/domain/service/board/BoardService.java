@@ -1,5 +1,6 @@
 package kr.co.bit.domain.service.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import kr.co.bit.domain.dto.board.BoardDto;
@@ -21,5 +22,7 @@ public interface BoardService {
 	public int deleteBoard(DeleteBoardDto boarddto);
 
 	BoardVo selectBoard(BoardDto BoardDto);
+
+	List<HashMap<String, String>> answercheck(String userid);
 
 }

@@ -1,5 +1,6 @@
 package kr.co.bit.dao.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -29,5 +30,5 @@ public interface BoardDao {
 
 		BoardVo selectBoard(BoardDto BoardDto);
 	
-	
+		List<HashMap<String, String>> answercheck(String userid);
 }

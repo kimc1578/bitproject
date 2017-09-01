@@ -1,5 +1,6 @@
 package kr.co.bit.controller.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -30,12 +31,20 @@ public class BoardController {
 	@RequestMapping("/boardlist")
 	public String boardList(Model model, HttpSession session) {
 		LoginVo loginvo = (LoginVo) session.getAttribute("loginVo");
-
-		model.addAttribute("boardlist", boardservice.selectAll_User(loginvo.getUserid()));
+		
+		List<BoardItemVo>boardlist = boardservice.selectAll_User(loginvo.getUserid());
+	
+		List<HashMap<String, String>> answervo=boardservice.answercheck(loginvo.getUserid());
+		model.addAttribute("boardlist",boardlist );
+		model.addAttribute("answervo",answervo );
+		
+		
 		return "/board/boardlist";
 
 	}
 
+	
+	
 	@RequestMapping(value = "/bwrite", method = RequestMethod.POST)
 	public String bwirte(InsertBoardDto bdto) {
 		return null;

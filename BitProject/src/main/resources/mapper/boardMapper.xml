@@ -8,7 +8,7 @@
 	<select id="selectall" resultType="kr.co.bit.domain.vo.board.BoardItemVo">
 
 		select bidx, title
-		,USERID,WRITEDATE from tb_board where userid = #{userid}
+		,USERID,WRITEDATE from tb_board where userid = #{userid} order by bidx DESC
 
 	</select>
 
@@ -45,7 +45,9 @@
 		DELETE  tb_board where BIDX = #{bidx} and userid= #{userid}
 	</delete>
 
-
+	<select id="answer_check" parameterType="string" resultType="hashmap">
+		select bidx from TB_BOARD_ANSWER where userid=#{userid}
+	</select>
 
 
 </mapper>

@@ -5,12 +5,30 @@ import org.springframework.data.annotation.Id;
 public class BookVo {
 	@Id
 	String id;
-	String  title ,writer,subtitle,translator,publisher ,price,subcategory ,tab,image  ;
-	public String getTitle() {
-		return title;
+	String  title ,subtitle,publisher ,price,detailNo ,origin,writer,image ;
+
+	public String getImage() {
+		return image;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getId() {
+		return id;
+	}
+
+
+	@Override
+	public String toString() {
+		return "BookVo [id=" + id + ", title=" + title + ", subtitle=" + subtitle + ", publisher=" + publisher
+				+ ", price=" + price + ", detailNo=" + detailNo + ", origin=" + origin + ", writer=" + writer
+				+ ", image=" + image + "]";
+	}
+	public String getDetailNo() {
+		return detailNo;
+	}
+	public void setDetailNo(String detailNo) {
+		this.detailNo = detailNo;
 	}
 	public String getWriter() {
 		return writer;
@@ -18,17 +36,20 @@ public class BookVo {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public String getSubtitle() {
 		return subtitle;
 	}
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
-	}
-	public String getTranslator() {
-		return translator;
-	}
-	public void setTranslator(String translator) {
-		this.translator = translator;
 	}
 	public String getPublisher() {
 		return publisher;
@@ -42,35 +63,11 @@ public class BookVo {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getSubcategory() {
-		return subcategory;
+	public String getOrigin() {
+		return origin;
 	}
-	public void setSubcategory(String subcategory) {
-		this.subcategory = subcategory;
-	}
-	public String getTab() {
-		return tab;
-	}
-	public void setTab(String tab) {
-		this.tab = tab;
-	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	@Override
-	public String toString() {
-		return "BookVo [title=" + title + ", writer=" + writer + ", subtitle=" + subtitle + ", translator=" + translator
-				+ ", publisher=" + publisher + ", price=" + price + ", subcategory=" + subcategory + ", tab=" + tab
-				+ ", image=" + image + ", id=" + id + "]";
+	public void setOrigin(String origin) {
+		this.origin = origin;
 	}
 	
 	

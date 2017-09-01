@@ -14,23 +14,28 @@
 <title>Main</title>
 
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
 <!-- font awesome -->
-<link rel="stylesheet" href="css/font-awesome.min.css" media="screen"
-	title="no title" charset="utf-8">
+<link rel="stylesheet" href="./resources/css/font-awesome.min.css"
+	media="screen" title="no title" charset="utf-8">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Custom style -->
-<link rel="stylesheet" href="css/style.css" media="screen"
+<link rel="stylesheet" href="./resources/css/style.css" media="screen"
 	title="no title" charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 
 <script>
+
 	$(document).ready(function() {
+	
 		$(".btn_img").click(function() {
 			$(".container").hide();
 			$(".ich_container").show();
@@ -39,30 +44,31 @@
 			$(".ich_container").hide();
 			$(".container").show();
 		});
-		$("#login_btn").click(function(){
-			
-			location.href= '/user/join_login'
-		});
 
 		$(".ich_btn").click(function() {
 			$(".btn_file").click();
 
 		});
 		$(".btn_file").on('change', function() {
-
-		
-		
-			$(".ich-form-horizontal").submit();
+			 var f = this.files[0];
+			 
+			var maxSize = 4194304;
+			
+			if(f.size>maxSize||f.fileSize>maxSize){
+				  alert("첨부파일 사이즈는 4MB 이내로 등록 가능합니다.    ");
+		            return;
+			}
+			
+			 $(".ich-form-horizontal").submit(); 
 
 		});
-	
 		
-		var success = $("#signsuccess").val();
-		alert(success)
-		if(success=="ok"){
-			alert("로그인 하세요");
-		}
 		
+		$("#login_btn").click(function() {
+
+			location.href = '/user/join_login'
+		});
+
 	});
 </script>
 
@@ -313,21 +319,113 @@ body {
 .file-area {
 	display: none;
 }
+
+.fa fa-th {
+	width: auto;
+	float: right;
+}
+
+.user_name {
+	width: auto;
+	float: left;
+	font-size: 17px;
+	margin-right: 6px;
+	margin-left: 60px;
+	margin-top: 0px;
+	border-bottom: 1px solid #5385c1;
+	color: #5385c1;
+}
+
+.aft_lonin_area {
+	width: 11.18%;
+	margin-top: 20px;
+	margin-right: 0px;
+}
+
+.dropdown_btn {
+	padding-top: 2.4px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-right: 56px;
+	border: none;
+	background-color: white;
+	color: none;
+}
+
+.dropdown-menu {
+	text-transform: uppercase;
+	color: #5385c1;
+	border: 1px solid #5385c1;
+	background: transparent;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	margin-left: 0;
+	box-shadow: 3px 0px 6px 1px rgba(83, 133, 193, 0.1), 0 6px 20px 0
+		rgba(83, 133, 193, 0.1);
+}
+
+.divider {
+	color: #5385c1;
+	border: #5385c1;
+}
+
+.drdw:hover {
+	background-color: #cad9ec;
+	color: #5385c1;
+}
+
+.drdw:link:active {
+	background-color: #5385c1;
+	color: #5385c1;
+}
+
+.drdw:link {
+	color: #5385c1;
+}
+
+.drdw:visited {
+	color: #5385c1;
+}
 </style>
 </head>
 <body>
 
 	<div class="lonin_area" align="right">
-		<button class="login_btn" id="login_btn">Log in & Join in</button>
+		<c:if test="${loginVo eq null}">
+			<button class="login_btn" id="login_btn">Log in & Join in</button>
+		</c:if>
+		<c:if test="${loginVo ne null}">
+		<div class="aft_lonin_area" align="right">
+			<div class="user_name">${loginVo.username}</div>
+			<div class="dropdown">
+				<button class="dropdown_btn" type="button" id="menu1"
+					data-toggle="dropdown">
+					<i class="fa fa-th" style="font-size: 24px; color: #5385c1 "></i>
+				</button>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					<li role="presentation"><a class="drdw" id="my_page"
+						role="menuitem" tabindex="-1" href="/user/bookmark">My Page</a></li>
+					<li role="presentation"><a class="drdw" id="cs_center"
+						role="menuitem" tabindex="-1" href="/user/faq">C/S Center</a></li>
+					<li role="presentation" class="divider"></li>
+					<li role="presentation"><a class="drdw" id="log_out"
+						role="menuitem" tabindex="-1" href="/user/logout">Log Out</a></li>
+				</ul>
+			</div>
+		</div>
+		</c:if>
+		
 	</div>
 	<div>
 		<div class="container">
 
 			<div class="search-group" align="center">
-				<form class="input_form" action="/search">
-					<input class="search-area" name ="q" id="search" type="search">
+				<form class="input_form searchfrm" action="/ig_search">
+					<input class="search-area" name="q" id="search" type="search">
 				</form>
-				<button class="btn_sch" id="sch"  type="submit" value="검색">
+				<button class="btn_sch" id="sch" type="submit" value="검색">
 					<i class="fa fa-search"></i>
 				</button>
 				<button class="btn_img" id="img" value="이미지검색">
@@ -354,7 +452,7 @@ body {
 					<input class="uploading_image" id="ich_search" type="search"
 						placeholder="Image does not selected">
 					<div class="file-area">
-						<input class="btn_file" name="file" type="file">
+						<input class="btn_file" name="file" type="file" accept=".jpg, .png, .gif">
 					</div>
 				</form>
 				<button class="ich_btn" value="Select image">Select image</button>
@@ -362,6 +460,6 @@ body {
 		</div>
 	</div>
 </body>
-<input type="hidden" value="${success}" id="signsuccess"/>
+
 </html>
 

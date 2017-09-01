@@ -11,9 +11,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.co.bit.mongo.book.dao.BookContentsDao;
+import kr.co.bit.mongo.book.domain.vo.BookDetailVo;
 import kr.co.bit.mongo.book.domain.vo.BookVo;
-import kr.co.bit.mongo.book.domain.vo.Test2Vo;
-import kr.co.bit.mongo.book.domain.vo.TestVo;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/*-context.xml"})
 public class MongoDBTest {
@@ -36,9 +36,16 @@ public class MongoDBTest {
 		*/
 		
 		
-		System.out.println(bookdao.bookcount());
+		 // System.out.println(bookdao.bookdetailfind("268673060"));
+		  
+
+		System.out.println(bookdao.defalutbookinfo());
+ 
+ 
 		
-		
+ 			
+
+
 		/*List<Test2Vo> list = bookdao.test2findAll();
 		
 		for(Test2Vo vo :list){

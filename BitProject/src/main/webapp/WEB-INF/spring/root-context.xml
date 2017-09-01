@@ -42,8 +42,10 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory">
 		</constructor-arg>
 	</bean>
+	<context:component-scan base-package="kr.co.bit.elastic.book.dao"></context:component-scan>
 	<context:component-scan base-package="kr.co.bit.dao"></context:component-scan>
 	<context:component-scan base-package="kr.co.bit.domain.service"></context:component-scan>
 	<context:component-scan base-package="kr.co.bit.commons"></context:component-scan>
+	<context:component-scan base-package="kr.co.bit.webdocument"></context:component-scan>
 
 </beans>

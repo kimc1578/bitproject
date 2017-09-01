@@ -1,5 +1,6 @@
 package kr.co.bit.dao.board.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -61,6 +62,13 @@ public class BoardDaoimpl implements BoardDao {
 	public int insertBoard(InsertBoardDto boarddto) {
 		// TODO Auto-generated method stub
 		return session.insert(namespace+".insert_board", boarddto);
+	}
+
+
+	@Override
+	public List<HashMap<String, String>> answercheck(String userid) {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+".answer_check",userid);
 	}
 
 

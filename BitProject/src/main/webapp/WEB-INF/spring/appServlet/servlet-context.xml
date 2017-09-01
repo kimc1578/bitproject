@@ -30,26 +30,30 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/board/*" />
+			<mapping path="/user/*"/>
+			<exclude-mapping path="/user/join_login"/>
+			<exclude-mapping path="/user/joinOk"/>
+			<exclude-mapping path="/user/loginOk"/>
+			<exclude-mapping path="/user/logout"/>
+			<exclude-mapping path="/user/idcheck"/>
+			<exclude-mapping path="/user/passcheckOk"/>
+		
+			
 			<beans:bean class="kr.co.bit.interceptor.AuthInterceptor" />
 
 		</interceptor>
+
 		<interceptor>
-				<mapping path="/**"/>
-				<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor">
-				</beans:bean>
-			</interceptor>
+			<mapping path="/user/info"/>
+			<mapping path="/user/modify"/>
+			<mapping path="/user/passmodi"/>
+		<beans:bean class="kr.co.bit.interceptor.PasswordCheckInterceptor"></beans:bean>
+		</interceptor>
+
 
 	</interceptors>
 
 	<context:component-scan base-package="kr.co.bit.controller" />
-
-	<annotation-driven>
-		<argument-resolvers>
-
-			<beans:bean
-				class="org.springframework.mobile.device.DeviceWebArgumentResolver"></beans:bean>
-		</argument-resolvers>
-
-	</annotation-driven>
+	<context:component-scan base-package="kr.co.bit.exception"></context:component-scan>
 
 </beans:beans>

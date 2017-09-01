@@ -1,5 +1,7 @@
 package kr.co.bit.domain.service.user.impl;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import kr.co.bit.domain.vo.user.UserInfoVo;
 public class UserServiceimpl implements UserService {
 	@Autowired 
 	UserDao userdao;
+	
+	
 
 	@Override
 	public UserInfoVo userinfo(String userid) {
@@ -50,6 +54,18 @@ public class UserServiceimpl implements UserService {
 	public LoginVo userlogin(LoginDto dto) {
 		// TODO Auto-generated method stub
 		return userdao.userlogin(dto);
+	}
+
+	@Override
+	public int passcheck(LoginDto dto) {
+		// TODO Auto-generated method stub
+		return userdao.passcheck(dto);
+	}
+
+	@Override
+	public int userpassmodi(HashMap<String, String> hashMap) {
+		// TODO Auto-generated method stub
+		return userdao.userpassmodi(hashMap);
 	}
 	
 	
